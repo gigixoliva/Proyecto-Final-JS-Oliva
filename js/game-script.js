@@ -77,10 +77,10 @@ va a mover 1 div a la vez
 function moverJugador(e){
   pixeles[jugadorIndex].classList.remove('jugador')
   switch(e.key){
-    case 'izquierdaFlecha':
+    case 'ArrowLeft':
       if (jugadorIndex % width !==0) jugadorIndex -=1
       break
-    case 'derechaFlecha':
+    case 'ArrowRight':
       if (jugadorIndex % width < width -1) jugadorIndex +=1
      break
   }
@@ -137,7 +137,7 @@ function moverAliens(){
   }
  }
   if (aliensRemoved.length === aliensInvaders.length){
-    resultsDisplay.innerHTML = 'YOU WON!'
+    resultsDisplay.innerHTML = 'YOU WON!', (results)
     clearInterval(aliensID)
    }
 
@@ -150,30 +150,30 @@ aliensID = setInterval(moverAliens, 500)
 //dibujar proyectiles y que se muevan (100 ms)
 
 function disparar(e){
-  let proyectilID
-  let proyectilIndex = jugadorIndex
+  let disparoID
+  let disparoIndex = jugadorIndex
   function moverDisparo(){
-    pixeles[proyectilIndex].classList.remove('disparo')
-    proyectilIndex -= width
-    pixeles[proyectilIndex].classList.add('disparo')
+    pixeles[disparoIndex].classList.remove('disparo')
+    disparoIndex -= width
+    pixeles[disparoIndex].classList.add('disparo')
 
-    if (pixeles[proyectilIndex].classList.contains('invaders')){
-      pixeles[proyectilIndex].classList.remove('disparo')
-      pixeles[proyectilIndex].classList.remove('invaders')
-      pixeles[proyectilIndex].classList.add('boom')
+    if (pixeles[disparoIndex].classList.contains('invaders')){
+      pixeles[disparoIndex].classList.remove('disparo')
+      pixeles[disparoIndex].classList.remove('invaders')
+      pixeles[disparoIndex].classList.add('boom')
       //para eliminar los proyectiles en 3s cuando pasan por los aliens
-     setTimeout(() => pixeles[proyectilIndex].classList.remove('boom'),250)
-     clearInterval(proyectilId)
+     setTimeout(() => pixeles[disparoIndex].classList.remove('boom'),250)
+     clearInterval(disparoID)
      
-     const alienRemoved = aliensInvaders.indexOf(proyectilIndex) 
+     const alienRemoved = aliensInvaders.indexOf(disparoIndex) 
      aliensRemoved.push(alienRemoved)
      results ++ 
      resultsDisplay.innerHTML = results
     }
   }
   switch(e.key){
-    case 'arribaFlecha':
-      proyectilID = setInterval(moverDisparo, 100)
+    case 'ArrowUp':
+      disparoID = setInterval(moverDisparo, 100)
   }
 }
 
