@@ -1,20 +1,23 @@
 
 //llamo al canvas
-const canvas = document.querySelector('.canvas')
+const grid = document.querySelector('.grid')
 
 //resultados(score)
 
-let scoreDisplay = document.querySelector('.results')
+let resultsDisplay = document.querySelector('.results')
 
-//let globales para el movimiento
+//let globales
 let width = 15
 
 let direccion = 1
 
-aliensID
-
+let aliensID
 
 let direccionDerecha = true
+
+let aliensRemoved = []
+
+let results = 0
 
 //let para luego hacer el jugador (202 quiere decir que va a estar en el div 202)
 
@@ -25,10 +28,10 @@ let jugadorIndex = 202
 //appendChild para añadirlos sin necesariamente escribir todos los divs en el html
 for (let i = 0; i < 225; i++) {
   const pixeles = document.createElement('div')
-  canvas.appendChild(pixeles)
+  grid.appendChild(pixeles)
 }
 
-const pixeles = Array.from(document.querySelectorAll('.canvas div'))
+const pixeles = Array.from(document.querySelectorAll('.grid div'))
 
 
 //se asigna el orden y cuales van a ser los divs para los aliens
@@ -46,7 +49,9 @@ el draw a lo ultimo para que se ejecute automaticamente */
 
 function draw() {
   for (let i = 0; i < aliensInvaders.length; i++) {
-    pixeles[aliensInvaders[i]].classList.add('invaders')
+    if(!aliensRemoved.includes(i)){
+     pixeles[aliensInvaders[i]].classList.add('invaders')
+    }
   }
 } 
 draw()
@@ -69,7 +74,7 @@ usando switch y break para las direcciones (izq,der) y se
 va a mover 1 div a la vez
 */
 
-function movimientoJugador(e){
+function moverJugador(e){
   pixeles[jugadorIndex].classList.remove('jugador')
   switch(e.key){
     case 'izquierdaFlecha':
@@ -82,7 +87,7 @@ function movimientoJugador(e){
   pixeles[jugadorIndex].classList.add('jugador')
 
 }
-document.addEventListener('keydown', movimientoJugador)
+document.addEventListener('keydown', moverJugador)
 
 
 /*con esto se mueven los aliens, definiendo los margenes de izq y derecha para hacerlo posible
@@ -92,7 +97,7 @@ se dibujen en otro
 */
 
 
-function movimientoAliens(){
+function moverAliens(){
   const margenIzquierdo = aliensInvaders[0] % width === 0
   const margenDerecho = aliensInvaders[aliensInvaders.length-1] % width === width -1
   remove()
@@ -117,7 +122,7 @@ function movimientoAliens(){
     aliensInvaders[i] += direccion
   }
 
-draw()
+  draw()
 
 
  if (pixeles[jugadorIndex].classList.contains('invaders', 'jugador')){
@@ -127,21 +132,25 @@ draw()
 
   for (let i = 0; i <aliensInvaders.length; i++){
      if (aliensInvaders[i] > (pixeles.length)){
-    
-    resultsDisplay.innerHTML = 'GAME OVER'
-    clearInterval(aliensID)
+     resultsDisplay.innerHTML = 'GAME OVER'
+     clearInterval(aliensID)
   }
  }
+  if (aliensRemoved.length === aliensInvaders.length){
+    resultsDisplay.innerHTML = 'YOU WON!'
+    clearInterval(aliensID)
+   }
+
 }
 
-//interval para que se ejecute la funcion (hasta ahora no se detiene)
+//interval para que se ejecute la funcion (hasta ahora no se detiene hasta que toque al jugador)
 
-aliensID = setInterval(movimientoAliens, 350)
+aliensID = setInterval(moverAliens, 500)
 
 //dibujar proyectiles y que se muevan (100 ms)
 
 function disparar(e){
-  let proyectil
+  let proyectilID
   let proyectilIndex = jugadorIndex
   function moverDisparo(){
     pixeles[proyectilIndex].classList.remove('disparo')
@@ -152,11 +161,19 @@ function disparar(e){
       pixeles[proyectilIndex].classList.remove('disparo')
       pixeles[proyectilIndex].classList.remove('invaders')
       pixeles[proyectilIndex].classList.add('boom')
+      //para eliminar los proyectiles en 3s cuando pasan por los aliens
+     setTimeout(() => pixeles[proyectilIndex].classList.remove('boom'),250)
+     clearInterval(proyectilId)
+     
+     const alienRemoved = aliensInvaders.indexOf(proyectilIndex) 
+     aliensRemoved.push(alienRemoved)
+     results ++ 
+     resultsDisplay.innerHTML = results
     }
   }
   switch(e.key){
     case 'arribaFlecha':
-      proyectil = setInterval(moverDisparo, 100)
+      proyectilID = setInterval(moverDisparo, 100)
   }
 }
 

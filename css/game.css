@@ -1,5 +1,5 @@
 
-.canvas {
+.grid {
 	width: 300px;
 	height: 300px;
 	border: solid black 1px;
@@ -8,12 +8,12 @@
 	background-image: url(https://64.media.tumblr.com/9dd7532f7b624d74e1da821f3338ec69/66730ea42c74af79-95/s250x400/b851c9ed4ae5942d5647547898c67516c48b6191.pnj);
 }
 
-.canvas div {
+.grid div {
 	width: 20px;
 	height: 20px;
 }
 
-.invader {
+.invaders {
 	background-color: purple;
 	border-radius: 10px;
 }
@@ -22,7 +22,7 @@
 	background-color: pink;
 }
 
-.laser {
+.disparo {
 	background-color: orange;
 }
 
