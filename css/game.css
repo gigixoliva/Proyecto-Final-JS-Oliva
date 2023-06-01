@@ -1,4 +1,8 @@
 
+body{
+	background-color: darkblue
+}
+
 .grid {
 	width: 300px;
 	height: 300px;
@@ -6,6 +10,9 @@
 	display: flex;
 	flex-wrap: wrap;
 	background-image: url(https://64.media.tumblr.com/9dd7532f7b624d74e1da821f3338ec69/66730ea42c74af79-95/s250x400/b851c9ed4ae5942d5647547898c67516c48b6191.pnj);
+	background-repeat: repeat;
+	margin: auto;
+	
 }
 
 .grid div {
@@ -13,19 +20,33 @@
 	height: 20px;
 }
 
+.botonStart{
+	margin: auto;
+}
+
+h1 {
+	text-align: center;
+}
+
 .invaders {
-	background-color: purple;
-	border-radius: 10px;
+	background-image: url(https://64.media.tumblr.com/1f901931644d8e980b61a013e4b6c0d8/923fbc0e3f8079fb-dd/s250x400/0669cd33c2ee959d64edccc89a285ca661025f73.gifv);
+	background-repeat: no-repeat;
+	background-size: 20px, 20px;
 }
 
 .jugador {
-	background-color: pink;
+	background-image: url(https://64.media.tumblr.com/ba047b40ec8fa2e666a5ab3aed449cb3/12590d169093ceb4-df/s75x75_c1/b803f0d437c4642ead22fe85341de3e1e2c1c173.pnj);
+    background-repeat: no-repeat;
+	background-size: 20px,20px;
 }
 
 .disparo {
 	background-color: orange;
+
 }
 
 .boom {
 	background-color: red;
 }
+
+
