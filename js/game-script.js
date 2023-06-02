@@ -1,28 +1,33 @@
-//window on load para poder poner el script en el head
+//window load para poder poner el script en el head
 
 window.addEventListener('load', (event) =>{
+    //llamo al canvas
+    const grid = document.querySelector('.grid')
+  
+    //resultados
+    let resultsDisplay = document.querySelector('.results')
+    //score
+    let scoreDisplay = document.querySelector('.score')
+
+    //let globales
+    let width = 15
+
+    let direccion = 1
+
+    let aliensID
+ 
+    let direccionDerecha = true
+
+    let aliensRemoved = []
+
+    let results = 0
+
+    //array vacio para puntajes anteriores
+    let scoresArray = []
+    
   //botonstart
   function startGame(){
-      //llamo al canvas
-      const grid = document.querySelector('.grid')
-  
-      //resultados
-      let resultsDisplay = document.querySelector('.results')
-      //score
-      let scoreDisplay = document.querySelector('.score')
-  
-      //let globales
-      let width = 15
-  
-      let direccion = 1
-  
-      let aliensID
-   
-      let direccionDerecha = true
-  
-      let aliensRemoved = []
-  
-      let results = 0
+      
   
       //let para luego hacer el jugador (202 quiere decir que va a estar en el div 202 de 224)
   
@@ -140,6 +145,7 @@ window.addEventListener('load', (event) =>{
           resultsDisplay.innerHTML = 'GAME OVER'
           clearInterval(aliensID)
           clearTimer()
+
           }
   
        for (let i = 0; i <aliensInvaders.length; i++){
@@ -209,16 +215,14 @@ window.addEventListener('load', (event) =>{
   }
   boton.addEventListener('click', desactivarBtn)
 
-  //timer
+  //timer (creo que la mitad de las horas las dedique a esto)
   let minutesCount = 0
   let secondsCount = 0
-  let milisecondsCount = 0
   minutes = document.getElementById("minutes")
   seconds = document.getElementById("seconds")
-  miliseconds = document.getElementById("miliseconds")
 
   function startTimer(){
- minutessetInterval = setInterval(function(){
+  minutessetInterval = setInterval(function(){
   minutesCount += 1
   minutes.innerHTML = minutesCount
  }, 60000)
@@ -231,31 +235,61 @@ window.addEventListener('load', (event) =>{
   seconds.innerHTML = secondsCount
  },1000)
 
- milisecondssetInterval = setInterval(function(){
-  milisecondsCount += 1
-  if(milisecondsCount > 99){
-      milisecondsCount = 1
-  }
-  miliseconds.innerHTML = milisecondsCount
- },10)
-}
-document.getElementById("startBtn").addEventListener("click", startTimer) 
+ }
+ document.getElementById("startBtn").addEventListener("click", startTimer) 
 
-//para parar el timer una vez que el juego finalize usando las condiciones para ganar/perder
+ //para parar el timer una vez que el juego finalize usando las condiciones para ganar/perder
 
-function clearTimer(){
-  clearInterval(minutessetInterval)
-  clearInterval(secondssetInterval)
-  clearInterval(milisecondssetInterval)
-}
+ function clearTimer(){
+    clearInterval(minutessetInterval)
+    clearInterval(secondssetInterval)
+    }
 
   //boton restart
   function refreshGame(){
       location.reload()
-  }
+    }
   document.getElementById("restart").addEventListener("click", refreshGame)
 
+//guardar score
+function guardarScore(){
+    const scoreData = {
+        score: results,
+        time: {
+          minutes: minutesCount,
+          seconds: secondsCount,
+        }
+      };
+      
+     //para añadir al array
+      scoresArray.push(scoreData)
+      
+      // añadir al storage local convirtiendo en string
+      localStorage.setItem('scores', JSON.stringify(scoresArray))
+    } document.getElementById("saveBtn").addEventListener("click", guardarScore)
 
-  //storage local
+
+  //puntajes y tiempo anteriores
   
+  function mostrar() {
+     const scoreList = document.getElementById('scoreList')
+
+     scoreList.innerHTML = ''
+
+     const guardado = localStorage.getItem('scores')
+        if (guardado) {
+         const scores = JSON.parse(guardado)
+
+          // para visualizar en html
+        function crearLi(){
+         scores.forEach((score) => {
+         const scoreItem = document.createElement('li')
+         scoreItem.innerText = ` SCORE : ${score.score} - TIME: ${score.time.minutes}:${score.time.seconds}`
+         scoreList.appendChild(scoreItem);
+        }  )
+        }crearLi()
+    }
+  }
+  mostrar()
+
 })

@@ -5,26 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SPACE INVADERS</title>
-    <link rel="stylesheet" href="./css/game.css">  
+    <link rel="stylesheet" href="./css/game.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monomaniac+One&display=swap" rel="stylesheet">
     <script src="./js/game-script.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    
 </head>
 <body>
     <h1 class="results"> SHOOT THE ALIENS! </h1>
     <h1 class="score">0</h1>
     <h2>TIME</h2>
-    <div>
+    <div class="timerCont">
         <span id="minutes">0:</span>
         <span id="seconds">0</span>
-        <span id="miliseconds">0</span>
     </div>
     <div class="grid"></div>
-    <button id= startBtn class="botonStart">START</button>
-    <button id="restart">PLAY AGAIN</button>
-    <h2>YOUR SCORE</h2>
-    <h3></h3>
-    <div></div>
-    <h2>HIGHEST SCORES</h2>
-    <div></div>
+    <div class="contBtn">
+        <button id= startBtn class="botonStart">START</button>
+        <button id="restart">PLAY AGAIN</button>
+        <button id="saveBtn">SAVE</button>
+    </div>
+    <h2>PAST SCORE</h2>
+    <ul id="scoreList" class="listaScore"></ul>
 </body>
 </html>
