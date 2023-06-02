@@ -1,16 +1,16 @@
 
 body{
-	background-color: black;
 	margin-top: 125px;
+	background-color: black;
 }
 
 .grid {
 	width: 300px;
 	height: 300px;
-	border: solid black 1px;
+	border: solid white 1px;
 	display: flex;
 	flex-wrap: wrap;
-	background-image: url(https://64.media.tumblr.com/9dd7532f7b624d74e1da821f3338ec69/66730ea42c74af79-95/s250x400/b851c9ed4ae5942d5647547898c67516c48b6191.pnj);
+	background-image: url(https://i.pinimg.com/originals/b4/71/d6/b471d641c2fb84308dfb016cbf4ac6bb.gif);
 	background-repeat: repeat;
 	margin: auto;
 	
@@ -67,7 +67,13 @@ ul{
 	border: 1px, white;
 	font-size: 30px;
 }
+.scoresTabla{
+	border: 1px solid white;
+	width: 300px;
+	height: 300px;
+	margin: auto;
 
+}
 .invaders {
 	background-image: url(https://64.media.tumblr.com/1f901931644d8e980b61a013e4b6c0d8/923fbc0e3f8079fb-dd/s250x400/0669cd33c2ee959d64edccc89a285ca661025f73.gifv);
 	background-repeat: no-repeat;
@@ -75,20 +81,20 @@ ul{
 }
 
 .jugador {
-	background-image: url(https://64.media.tumblr.com/ba047b40ec8fa2e666a5ab3aed449cb3/12590d169093ceb4-df/s75x75_c1/b803f0d437c4642ead22fe85341de3e1e2c1c173.pnj);
+	background-image: url(https://64.media.tumblr.com/f0f05efc7077d56d7f2b7cd08740fbf0/e2c00fe2299666b8-d6/s1280x1920/11cf7d2006086ece3a7e47b4fe4ac96710265eb8.gifv);
     background-repeat: no-repeat;
 	background-size: 20px,20px;
 }
 
 .disparo {
-	background-image: url(https://64.media.tumblr.com/2649bf1b55c2bdf9e3fbb1ad440e5f2c/d738e22290827b71-3a/s100x200/13d898b13c7c2ce6a978b6380b3d3b224c8b6590.gifv);
+	background-image: url(https://64.media.tumblr.com/3e656aeaf39d8e6a022bcd09721c674f/0d2d8b814f1f32c2-38/s400x600/2b66dfe9ab70603b631575c04e8efd8ea2853606.gifv);
 	background-repeat: no-repeat;
 	background-size: 20px,20px;
 
 }
 
 .boom {
-	background-image: url(https://64.media.tumblr.com/064fbcaf928a4f557f2358748442b123/d738e22290827b71-c0/s100x200/75999bd0659aecf50bea9228b64eea680c3605f9.gifv);
+	background-image: url(https://64.media.tumblr.com/ae2557fe49b3912d7f5e78667d332b00/0d2d8b814f1f32c2-20/s400x600/d1c0092371d7b61571c981f14d24e5168e502c85.gifv);
 	background-repeat: no-repeat;
 	background-size: 20px,20px;
 }

@@ -257,7 +257,7 @@ function guardarScore(){
         score: results,
         time: {
           minutes: minutesCount,
-          seconds: secondsCount,
+          seconds: secondsCount
         }
       };
       
@@ -273,8 +273,6 @@ function guardarScore(){
   
   function mostrar() {
      const scoreList = document.getElementById('scoreList')
-
-     scoreList.innerHTML = ''
 
      const guardado = localStorage.getItem('scores')
         if (guardado) {
