@@ -11,5 +11,8 @@ sin romper el código.
 
 Tuve problemas al hacer el display de la data en localstorage en html, sé que ya no valen más las correcciones y esta entrega es final , pero me gustaria si me pueden resolver la duda de cómo acomodarlo ya que en vez de hacerlo en forma de lista/array, me reemplaza el anterior resultado y así.
 
+ya que no tenía donde hostearla y aunque para la entrega no era necesario, la subi a un blog vacío de tumblr(en la version desktop se puede editar el html del blog) así pueden tener una preview de la página
+https://gametrials.tumblr.com/
+
 Gracias por todo Profe/Brian, saludos !
 
