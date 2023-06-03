@@ -259,14 +259,14 @@ function guardarScore(){
           minutes: minutesCount,
           seconds: secondsCount
         }
-      };
+      }
       
      //para añadir al array
       scoresArray.push(scoreData)
       
       // añadir al storage local convirtiendo en string
       localStorage.setItem('scores', JSON.stringify(scoresArray))
-    } document.getElementById("saveBtn").addEventListener("click", guardarScore)
+    } document.getElementById("saveBtn").addEventListener("click", guardarScore, mostrar())
 
 
   //puntajes y tiempo anteriores
@@ -278,16 +278,15 @@ function guardarScore(){
         if (guardado) {
          const scores = JSON.parse(guardado)
 
-          // para visualizar en html
-        function crearLi(){
+          // para visualizar en html creando un li por cada uno
+        
          scores.forEach((score) => {
          const scoreItem = document.createElement('li')
-         scoreItem.innerText = ` SCORE : ${score.score} - TIME: ${score.time.minutes}:${score.time.seconds}`
-         scoreList.appendChild(scoreItem);
-        }  )
-        }crearLi()
+         scoreItem.textContent = ` SCORE : ${score.score} - TIME: ${score.time.minutes}:${score.time.seconds}`
+         scoreList.appendChild(scoreItem)
+            }  )
+        
+        }
     }
-  }
-  mostrar()
 
 })
